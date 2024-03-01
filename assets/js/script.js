@@ -31,7 +31,7 @@ let dental = [
 //Agregar código para el desafio 2 aquí
 
 //RADIOLOGIA
-// document.write('<h3>Radiologia</h3>');
+document.write('<h3>Radiologia</h3>');
 let textoRadiologia = "";
 // Agrego la etiqueta <table>
 textoRadiologia += "<table>";
@@ -54,7 +54,7 @@ document.write(textoRadiologia);
 
 
 //TRAUMOTOLOGIA
-// document.write('<h3>Traumotologia</h3>');
+document.write('<h3>Traumotologia</h3>');
 let textoTraumatologia = "";
 // Agrego la etiqueta <table>
 textoTraumatologia += "<table>";
@@ -77,7 +77,7 @@ document.write(textoTraumatologia);
 
 
 //DENTAL 
-// document.write('<h3>Dental</h3>');
+document.write('<h3>Dental</h3>');
 let textoDental = "";
 // Agrego la etiqueta <table>
 textoDental += "<table>";
@@ -98,16 +98,12 @@ textoDental += "</table>";
 // document.getElementById("lista1"); 
 document.write(textoDental);
 
-// Agregar horas a traumatologia,  push(), shift(), split() en base a nuevo array de traumotologia
-let traumatologia1 = [
-  {hora: '8:00',  especialista: 'MARIA PAZ ALTUZARRA', paciente: 'PAULA SANCHEZ',     rut: '15554774-5', prevision: 'FONASA'},
-  {hora: '10:00', especialista: 'RAUL ARAYA',          paciente: 'ANGÉLICA NAVAS',    rut: '15444147-9', prevision: 'ISAPRE'},
-  {hora: '10:30', especialista: 'MARIA ARRIAGADA',     paciente: 'ANA KLAPP',         rut: '17879423-9', prevision: 'ISAPRE'},
-  {hora: '11:00', especialista: 'ALEJANDRO BADILLA',   paciente: 'FELIPE MARDONES',   rut: '1547423-6', prevision: 'ISAPRE'},
-  {hora: '11:30', especialista: 'CECILIA BUDNIK',      paciente: 'DIEGO MARRE',       rut: '16554741-K', prevision: 'FONASA'},
-  {hora: '12:00', especialista: 'ARTURO CAVAGNARO',    paciente: 'CECILIA MENDEZ',    rut: '9747535-8', prevision: 'ISAPRE'},
-  {hora: '12:30', especialista: 'ANDRES KANACRI',      paciente: 'MARCIAL SUAZO',     rut: '11254785-5', prevision: 'ISAPRE'},
-];
+
+// creando copia de arreglo con slide
+
+const traumatologia1 = [...traumatologia];
+console.log(traumatologia1);
+
 // Añado los nuevos elementos a traumotologia1
 traumatologia1.push( 
 {hora: '09:00',  especialista: 'RENÉ POBLETE', paciente: 'ANA GELLONA',     rut: '13123329-7', prevision: 'ISAPRE'},
@@ -141,6 +137,8 @@ document.write(textoTraumatologia1);
 
 
 //Agregar código para el desafio 2 aquí
+
+document.write('<h3>Cantidad de atenciones</h3>');
 
 document.write(`<p>Cantidad de atenciones para Radiología: ${radiologia.length}</p>`);
 document.write(`<p>Cantidad de atenciones para Traumatología: ${traumatologia.length}</p>`);
@@ -198,12 +196,11 @@ document.write(textoRadiologia1);
 //Lista de nombres
 document.write('<h3>Nombres pacientes</h3>');
 
-let todosLosPacientes = [...radiologia, ...traumatologia, ...dental];
-
+//listado de pacientes con concatenación
+let todosLosPacientes = radiologia.concat(traumatologia).concat(dental);
 console.log(todosLosPacientes);
 
 let nombresPacientes = todosLosPacientes.map(paciente => paciente.paciente);
-
 console.log(nombresPacientes);
 
 console.log('Nombres de los pacientes:');
@@ -230,3 +227,17 @@ let pacientesConFonasa = todosLosPacientesFonasa.filter(paciente => paciente.pre
 
 console.log('Pacientes con ISAPRE:');
 pacientesConFonasa.forEach(paciente => document.write(`<p>${paciente.paciente} - ${paciente.prevision}</p>`));
+
+
+//Agregar código para el desafio 2 aquí
+
+document.write('<h3>Cantidad de atenciones</h3>');
+
+document.write(`<p>Cantidad de atenciones para Radiología: ${radiologia.length}</p>`);
+document.write(`<p>Cantidad de atenciones para Traumatología: ${traumatologia.length}</p>`);
+document.write(`<p>Cantidad de atenciones para Dental: ${dental.length}</p>`);
+
+
+document.write(`<p>Primera atencion: ${radiologia[0].paciente} - ${radiologia[0].prevision} | Última atención: ${radiologia[radiologia.length -1].paciente} - ${radiologia[radiologia.length -1].prevision}.</p>`);
+document.write(`<p>Primera atencion: ${traumatologia[0].paciente} - ${traumatologia[0].prevision} | Última atención: ${traumatologia[traumatologia.length -1].paciente} - ${traumatologia[traumatologia.length -1].prevision}.</p>`);
+document.write(`<p>Primera atencion: ${dental[0].paciente} - ${dental[0].prevision} | Última atención: ${dental[dental.length -1].paciente} - ${dental[dental.length -1].prevision}.</p>`);
